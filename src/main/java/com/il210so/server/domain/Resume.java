@@ -3,11 +3,9 @@ package com.il210so.server.domain;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class Resume {
 
     @Id

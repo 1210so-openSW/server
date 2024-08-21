@@ -9,16 +9,18 @@ public class AcademicInfoResponse {
     private String schoolName;
     private String majorField;
     private String major;
+    private String graduationDate;
 
-    public AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major) {
+    public AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major, String graduationDate) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;
         this.major = major;
+        this.graduationDate = graduationDate;
     }
 
     public AcademicInfoResponse from(AcademicInfo academicInfo) {
         return new AcademicInfoResponse(academicInfo.getHighestEdu(), academicInfo.getSchoolName(),
-                academicInfo.getMajorField(), academicInfo.getMajor());
+                academicInfo.getMajorField(), academicInfo.getMajor(), academicInfo.getGraduationDate());
     }
 }

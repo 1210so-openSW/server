@@ -26,11 +26,11 @@ public class AcademicInfo {
     @Column(name = "schoolName", nullable = false)
     private String schoolName;
 
+    @Column(name = "majorField")
+    private String majorField;
+
     @Column(name = "major")
     private String major;
-
-    @Column(name = "detailedMajor")
-    private String detailedMajor;
 
     @Column(name = "graduationDate")
     private String graduationDate;
@@ -39,13 +39,14 @@ public class AcademicInfo {
     }
 
     @Builder
-    public AcademicInfo(Long id, Member member, String highestEdu, String schoolName, String major, String detailedMajor, String graduationDate) {
+    public AcademicInfo(Long id, Resume resume, Member member, String highestEdu, String schoolName, String majorField, String major, String graduationDate) {
         this.id = id;
+        this.resume = resume;
         this.member = member;
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
+        this.majorField = majorField;
         this.major = major;
-        this.detailedMajor = detailedMajor;
         this.graduationDate = graduationDate;
     }
 }

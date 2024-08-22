@@ -5,26 +5,25 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Getter
 @Entity
+@Getter
 @EntityListeners(AuditingEntityListener.class)
 public class Member {
-
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long memberId;
 
-    @Column(name="name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name="pwd", nullable = false)
+    @Column(nullable = false)
     private String pwd;
 
-    protected Member() {}
-
+    public Member() {
+    }
     @Builder
-    public Member(Long id, String name, String pwd) {
-        this.id = id;
+    public Member(Long memberId, String name, String pwd) {
+        this.memberId = memberId;
         this.name = name;
         this.pwd = pwd;
     }

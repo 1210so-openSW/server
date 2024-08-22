@@ -5,15 +5,17 @@ import com.il210so.server.domain.Resume;
 import com.il210so.server.domain.Member;
 import lombok.Getter;
 
+import java.util.Date;
+
 @Getter
 public class AcademicInfoRequest {
     private String highestEdu;
     private String schoolName;
     private String majorField;
     private String major;
-    private String graduationDate;
+    private Date graduationDate;
 
-    public AcademicInfoRequest(String highestEdu, String schoolName, String majorField, String major, String graduationDate) {
+    public AcademicInfoRequest(String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;

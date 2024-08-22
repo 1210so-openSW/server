@@ -27,9 +27,7 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
     public void saveAcademicInfos(AcademicInfoRequest academicInfoRequest, Long memberId, Long resumeId) {
         validateMemberExists(memberId);
         validateResumeExists(resumeId);
-        Member member = memberRepository.findById(memberId).get();
-        Resume resume = resumeRepository.findById(resumeId).get();
-        AcademicInfo academicInfo = academicInfoRequest.toAcademicInfo(member, resume);
+        AcademicInfo academicInfo = academicInfoRequest.toAcademicInfo(findMemberById(memberId), findResumeById(resumeId));
         academicInfoRepository.save(academicInfo);
     }
 
@@ -43,6 +41,16 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
         if(!memberRepository.existsById(memberId)) {
             throw new Il210soException(ErrorCode.MEMBER_NOT_FOUND);
         }
+    }
+
+    private Member findMemberById(Long memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new Il210soException(ErrorCode.MEMBER_NOT_FOUND));
+    }
+
+    private Resume findResumeById(Long resumeId) {
+        return resumeRepository.findById(resumeId)
+                .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
     }
 
     @Override

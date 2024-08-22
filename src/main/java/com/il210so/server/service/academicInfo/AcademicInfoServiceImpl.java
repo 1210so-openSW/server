@@ -45,12 +45,25 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
         }
     }
 
-
     @Override
     public void editAcademicInfos(AcademicInfoRequest academicInfoRequest, Long memberId, Long resumeId) {
         validateMemberExists(memberId);
         validateResumeExists(resumeId);
+        validateAcademicInfoExists(memberId, resumeId);
+        AcademicInfo academicInfo = academicInfoRepository.findByMEmberIdAndResumeId(memberId, resumeId);
+        AcademicInfo updatedAcademicInfo = academicInfo.update(
+                academicInfoRequest.getHighestEdu(),
+                academicInfo.getSchoolName(),
+                academicInfo.getMajorField(),
+                academicInfo.getMajor(),
+                academicInfo.getGraduationDate());
+        academicInfoRepository.save(updatedAcademicInfo);
+    }
 
+    private void validateAcademicInfoExists(Long memberId, Long resumeId) {
+        if (!(academicInfoRepository.existsByMemberIdAndResumeId(memberId, resumeId))) {
+            throw new Il210soException(ErrorCode.ACADEMIC_INFO_NOT_FOUND);
+        }
     }
 
     @Override

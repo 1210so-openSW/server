@@ -50,13 +50,13 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
         validateMemberExists(memberId);
         validateResumeExists(resumeId);
         validateAcademicInfoExists(memberId, resumeId);
-        AcademicInfo academicInfo = academicInfoRepository.findByMEmberIdAndResumeId(memberId, resumeId);
+        AcademicInfo academicInfo = academicInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
         AcademicInfo updatedAcademicInfo = academicInfo.update(
                 academicInfoRequest.getHighestEdu(),
-                academicInfo.getSchoolName(),
-                academicInfo.getMajorField(),
-                academicInfo.getMajor(),
-                academicInfo.getGraduationDate());
+                academicInfoRequest.getSchoolName(),
+                academicInfoRequest.getMajorField(),
+                academicInfoRequest.getMajor(),
+                academicInfoRequest.getGraduationDate());
         academicInfoRepository.save(updatedAcademicInfo);
     }
 
@@ -72,7 +72,7 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
         validateMemberExists(memberId);
         validateResumeExists(resumeId);
         validateAcademicInfoExists(memberId, resumeId);
-        AcademicInfo academicInfo = academicInfoRepository.findByMEmberIdAndResumeId(memberId, resumeId);
+        AcademicInfo academicInfo = academicInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
         return AcademicInfoResponse.from(academicInfo);
     }
 }

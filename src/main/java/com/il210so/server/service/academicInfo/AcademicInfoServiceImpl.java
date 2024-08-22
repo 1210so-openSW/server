@@ -69,8 +69,10 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
     @Override
     @Transactional(readOnly = true)
     public AcademicInfoResponse showAcademicInfos(Long memberId, Long resumeId) {
-        return null;
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        validateAcademicInfoExists(memberId, resumeId);
+        AcademicInfo academicInfo = academicInfoRepository.findByMEmberIdAndResumeId(memberId, resumeId);
+        return AcademicInfoResponse.from(academicInfo);
     }
-
-
 }

@@ -4,45 +4,46 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-@Entity
-@Getter
-public class AcademicInfo {
+import java.util.Date;
 
+@Getter
+@Entity
+public class AcademicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long academicId;
 
-    @JoinColumn(name = "resume_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Resume resume;
-
-    @JoinColumn(name = "member_Id", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @Column(name = "highestEdu", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resume_id", nullable = false)
+    private Resume resume;
+
+    @Column(name = "highest_edu", nullable = false)
     private String highestEdu;
 
-    @Column(name = "schoolName", nullable = false)
+    @Column(name = "school_name", nullable = false)
     private String schoolName;
 
-    @Column(name = "majorField")
+    @Column(name = "major_field", nullable = false)
     private String majorField;
 
     @Column(name = "major")
     private String major;
 
-    @Column(name = "graduationDate")
-    private String graduationDate;
+    @Column(name = "graduation_date")
+    private Date graduationDate;
 
-    protected AcademicInfo() {
+    public AcademicInfo() {
     }
 
     @Builder
-    public AcademicInfo(Long id, Resume resume, Member member, String highestEdu, String schoolName, String majorField, String major, String graduationDate) {
-        this.id = id;
-        this.resume = resume;
+    public AcademicInfo(Long academicId, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
+        this.academicId = academicId;
         this.member = member;
+        this.resume = resume;
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;

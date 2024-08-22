@@ -3,15 +3,17 @@ package com.il210so.server.dto.response.academicInfo;
 import com.il210so.server.domain.AcademicInfo;
 import lombok.Getter;
 
+import java.util.Date;
+
 @Getter
 public class AcademicInfoResponse {
     private String highestEdu;
     private String schoolName;
     private String majorField;
     private String major;
-    private String graduationDate;
+    private Date graduationDate;
 
-    public AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major, String graduationDate) {
+    private AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;
@@ -19,8 +21,12 @@ public class AcademicInfoResponse {
         this.graduationDate = graduationDate;
     }
 
-    public AcademicInfoResponse from(AcademicInfo academicInfo) {
-        return new AcademicInfoResponse(academicInfo.getHighestEdu(), academicInfo.getSchoolName(),
-                academicInfo.getMajorField(), academicInfo.getMajor(), academicInfo.getGraduationDate());
+    public static AcademicInfoResponse from(AcademicInfo academicInfo) {
+        return new AcademicInfoResponse(
+                academicInfo.getHighestEdu(),
+                academicInfo.getSchoolName(),
+                academicInfo.getMajorField(),
+                academicInfo.getMajor(),
+                academicInfo.getGraduationDate());
     }
 }

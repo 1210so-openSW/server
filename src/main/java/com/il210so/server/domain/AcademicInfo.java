@@ -27,7 +27,7 @@ public class AcademicInfo {
     @Column(name = "school_name", nullable = false)
     private String schoolName;
 
-    @Column(name = "major_field", nullable = false)
+    @Column(name = "major_field")
     private String majorField;
 
     @Column(name = "major")

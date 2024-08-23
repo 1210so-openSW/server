@@ -9,7 +9,7 @@ import lombok.Getter;
 public class TrainingInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long trainingId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -35,8 +35,8 @@ public class TrainingInfo {
     }
 
     @Builder
-    public TrainingInfo(Long trainingId, Member member, Resume resume, String trainingName, String trainingStartDate, String trainingEndDate, String trainingAgency) {
-        this.trainingId = trainingId;
+    public TrainingInfo(Long id, Member member, Resume resume, String trainingName, String trainingStartDate, String trainingEndDate, String trainingAgency) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.trainingName = trainingName;

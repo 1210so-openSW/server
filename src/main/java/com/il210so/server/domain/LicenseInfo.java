@@ -10,7 +10,7 @@ public class LicenseInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long licenseId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -32,8 +32,8 @@ public class LicenseInfo {
     }
 
     @Builder
-    public LicenseInfo(Long licenseId, Member member, Resume resume, String licenseName, String getDate, String agency) {
-        this.licenseId = licenseId;
+    public LicenseInfo(Long id, Member member, Resume resume, String licenseName, String getDate, String agency) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.licenseName = licenseName;

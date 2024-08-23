@@ -11,7 +11,7 @@ import java.util.Date;
 public class CareerInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long careerId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -37,8 +37,8 @@ public class CareerInfo {
     }
 
     @Builder
-    public CareerInfo(Long careerId, Member member, Resume resume, String place, Date startDate, Date endDate, String task) {
-        this.careerId = careerId;
+    public CareerInfo(Long id, Member member, Resume resume, String place, Date startDate, Date endDate, String task) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.place = place;

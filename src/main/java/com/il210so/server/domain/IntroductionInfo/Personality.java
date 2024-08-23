@@ -23,7 +23,8 @@ public class Personality {
     }
 
     @Builder
-    public Personality(IntroductionInfo introductionInfo, String personality) {
+    public Personality(Long id, IntroductionInfo introductionInfo, String personality) {
+        this.id = id;
         this.introductionInfo = introductionInfo;
         this.personality = personality;
     }

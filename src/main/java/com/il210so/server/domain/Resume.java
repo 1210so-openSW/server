@@ -9,7 +9,7 @@ import lombok.Getter;
 public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resumeId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -24,7 +24,8 @@ public class Resume {
     public Resume() {
     }
     @Builder
-    public Resume(Member member, String webviewUrl, String pdfUrl) {
+    public Resume(Long id, Member member, String webviewUrl, String pdfUrl) {
+        this.id = id;
         this.member = member;
         this.webviewUrl = webviewUrl;
         this.pdfUrl = pdfUrl;

@@ -23,11 +23,10 @@ public class AcademicInfoController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{academicInfoId}")
+    @PutMapping
     public ResponseEntity<Void> edit(
             @PathVariable Long memberId,
             @PathVariable Long resumeId,
-            @PathVariable Long academicInfoId,
             @RequestBody AcademicInfoRequest academicInfoRequest) {
         academicInfoService.editAcademicInfos(academicInfoRequest, memberId, resumeId);
         return ResponseEntity.ok().build();

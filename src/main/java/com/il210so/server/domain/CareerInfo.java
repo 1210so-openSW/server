@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
 
 @Getter
@@ -46,5 +45,17 @@ public class CareerInfo {
         this.startDate = startDate;
         this.endDate = endDate;
         this.task = task;
+    }
+
+    public CareerInfo update(String place, YearMonth startDate, YearMonth endDate, String task) {
+        return new CareerInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .place(place)
+                .startDate(startDate)
+                .endDate(endDate)
+                .task(task)
+                .build();
     }
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 @Getter
 @Entity
@@ -25,10 +26,10 @@ public class TrainingInfo {
     private String trainingName;
 
     @Column(name = "training_start_date", nullable = false)
-    private LocalDate trainingStartDate;
+    private YearMonth trainingStartDate;
 
     @Column(name = "training_end_date", nullable = false)
-    private LocalDate trainingEndDate;
+    private YearMonth trainingEndDate;
 
     @Column(name = "training_agency", nullable = false)
     private String trainingAgency;
@@ -37,7 +38,7 @@ public class TrainingInfo {
     }
 
     @Builder
-    public TrainingInfo(Long id, Member member, Resume resume, String trainingName, LocalDate trainingStartDate, LocalDate trainingEndDate, String trainingAgency) {
+    public TrainingInfo(Long id, Member member, Resume resume, String trainingName, YearMonth trainingStartDate, YearMonth trainingEndDate, String trainingAgency) {
         this.id = id;
         this.member = member;
         this.resume = resume;

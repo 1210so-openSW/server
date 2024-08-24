@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.Year;
 
 @Getter
 @Entity
@@ -33,14 +34,14 @@ public class AcademicInfo {
     @Column(name = "major")
     private String major;
 
-    @Column(name = "graduation_date")
-    private LocalDate graduationDate;
+    @Column(name = "graduation_year")
+    private Year graduationYear;
 
     public AcademicInfo() {
     }
 
     @Builder
-    public AcademicInfo(Long id, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
+    public AcademicInfo(Long id, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
         this.id = id;
         this.member = member;
         this.resume = resume;
@@ -48,6 +49,19 @@ public class AcademicInfo {
         this.schoolName = schoolName;
         this.majorField = majorField;
         this.major = major;
-        this.graduationDate = graduationDate;
+        this.graduationYear = graduationYear;
+    }
+
+    public AcademicInfo update(String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
+        return new AcademicInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .highestEdu(highestEdu)
+                .schoolName(schoolName)
+                .majorField(majorField)
+                .major(major)
+                .graduationYear(graduationYear)
+                .build();
     }
 }

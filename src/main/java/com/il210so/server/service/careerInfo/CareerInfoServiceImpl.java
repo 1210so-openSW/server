@@ -21,7 +21,7 @@ public class CareerInfoServiceImpl implements CareerInfoService {
 
     private final MemberRepository memberRepository;
     private final ResumeRepository resumeRepository;
-    private CareerInfoRepository careerInfoRepository;
+    private final CareerInfoRepository careerInfoRepository;
 
     @Override
     public void save(CareerInfoRequest careerInfoRequest, Long memberId, Long resumeId) {
@@ -33,7 +33,16 @@ public class CareerInfoServiceImpl implements CareerInfoService {
 
     @Override
     public void edit(CareerInfoRequest careerInfoRequest, Long memberId, Long resumeId, Long careerInfoId) {
-
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        validateCareerInfoExists(memberId, resumeId);
+        CareerInfo careerInfo = careerInfoRepository.findByIdAndMemberIdAndResumeId(careerInfoId, memberId, resumeId);
+        CareerInfo updatedCareerInfo = careerInfo.update(
+                careerInfoRequest.getPlace(),
+                careerInfoRequest.getStartDate(),
+                careerInfoRequest.getEndDate(),
+                careerInfoRequest.getTask());
+        careerInfoRepository.save(updatedCareerInfo);
     }
 
     @Override
@@ -62,5 +71,11 @@ public class CareerInfoServiceImpl implements CareerInfoService {
     private Resume findResumeById(Long resumeId) {
         return resumeRepository.findById(resumeId)
                 .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
+    }
+
+    private void validateCareerInfoExists(Long memberId, Long resumeId) {
+        if (!careerInfoRepository.existsByMemberIdAndResumeId(memberId, resumeId)) {
+            throw new Il210soException(ErrorCode.CAREER_INFO_NOT_FOUND);
+        }
     }
 }

@@ -64,7 +64,7 @@ public class AcademicInfoServiceImpl implements AcademicInfoService {
                 academicInfoRequest.getSchoolName(),
                 academicInfoRequest.getMajorField(),
                 academicInfoRequest.getMajor(),
-                academicInfoRequest.getGraduationDate());
+                academicInfoRequest.getGraduationYear());
         academicInfoRepository.save(updatedAcademicInfo);
     }
 

@@ -6,6 +6,7 @@ import com.il210so.server.domain.Member;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.Year;
 
 @Getter
 public class AcademicInfoRequest {
@@ -13,17 +14,17 @@ public class AcademicInfoRequest {
     private String schoolName;
     private String majorField;
     private String major;
-    private LocalDate graduationDate;
+    private Year graduationYear;
 
     public AcademicInfoRequest() {
     }
 
-    public AcademicInfoRequest(String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
+    public AcademicInfoRequest(String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;
         this.major = major;
-        this.graduationDate = graduationDate;
+        this.graduationYear = graduationYear;
     }
 
     public AcademicInfo toAcademicInfo(Member member, Resume resume) {
@@ -34,7 +35,7 @@ public class AcademicInfoRequest {
                 .schoolName(schoolName)
                 .majorField(majorField)
                 .major(major)
-                .graduationDate(graduationDate)
+                .graduationYear(graduationYear)
                 .build();
     }
 }

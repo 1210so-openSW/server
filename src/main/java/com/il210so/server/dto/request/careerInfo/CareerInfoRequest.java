@@ -3,9 +3,11 @@ package com.il210so.server.dto.request.careerInfo;
 import com.il210so.server.domain.CareerInfo;
 import com.il210so.server.domain.Member;
 import com.il210so.server.domain.Resume;
+import lombok.Getter;
 
 import java.time.YearMonth;
 
+@Getter
 public class CareerInfoRequest {
     private String place;
     private YearMonth startDate;

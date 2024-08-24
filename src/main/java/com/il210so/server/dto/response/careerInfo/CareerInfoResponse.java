@@ -4,6 +4,8 @@ import com.il210so.server.domain.CareerInfo;
 import lombok.Getter;
 
 import java.time.YearMonth;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 public class CareerInfoResponse {
@@ -19,11 +21,17 @@ public class CareerInfoResponse {
         this.task = task;
     }
 
-    private static CareerInfoResponse from(CareerInfo careerInfo) {
+    public static CareerInfoResponse from(CareerInfo careerInfo) {
         return new CareerInfoResponse(
                 careerInfo.getPlace(),
                 careerInfo.getStartDate(),
                 careerInfo.getEndDate(),
                 careerInfo.getTask());
+    }
+
+    public static List<CareerInfoResponse> from(List<CareerInfo> careerInfos) {
+        return careerInfos.stream()
+                .map(CareerInfoResponse::from)
+                .collect(Collectors.toList());
     }
 }

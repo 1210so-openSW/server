@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Entity
 public class AcademicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long academicId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -27,21 +27,21 @@ public class AcademicInfo {
     @Column(name = "school_name", nullable = false)
     private String schoolName;
 
-    @Column(name = "major_field", nullable = false)
+    @Column(name = "major_field")
     private String majorField;
 
     @Column(name = "major")
     private String major;
 
     @Column(name = "graduation_date")
-    private Date graduationDate;
+    private LocalDate graduationDate;
 
     public AcademicInfo() {
     }
 
     @Builder
-    public AcademicInfo(Long academicId, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
-        this.academicId = academicId;
+    public AcademicInfo(Long id, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.highestEdu = highestEdu;

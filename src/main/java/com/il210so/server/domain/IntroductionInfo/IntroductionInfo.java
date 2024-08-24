@@ -13,7 +13,7 @@ import java.util.List;
 public class IntroductionInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long introId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -29,8 +29,12 @@ public class IntroductionInfo {
     @Column(name = "cover_letter", nullable = false)
     private String coverLetter;
 
+    public IntroductionInfo() {
+    }
+
     @Builder
-    public IntroductionInfo(Member member, Resume resume, List<Personality> personalities, String coverLetter) {
+    public IntroductionInfo(Long id, Member member, Resume resume, List<Personality> personalities, String coverLetter) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.personalities = personalities;

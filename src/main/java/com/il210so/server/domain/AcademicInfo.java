@@ -42,7 +42,7 @@ public class AcademicInfo {
 
     @Builder
     public AcademicInfo(Long id, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
-        this.academicId = id;
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.highestEdu = highestEdu;

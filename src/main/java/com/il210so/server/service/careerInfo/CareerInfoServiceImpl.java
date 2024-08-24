@@ -37,7 +37,7 @@ public class CareerInfoServiceImpl implements CareerInfoService {
     public void edit(CareerInfoRequest careerInfoRequest, Long memberId, Long resumeId, Long careerInfoId) {
         validateMemberExists(memberId);
         validateResumeExists(resumeId);
-        validateCareerInfoExists(memberId, resumeId);
+        validateCareerInfoExists(careerInfoId);
         CareerInfo careerInfo = careerInfoRepository.findByIdAndMemberIdAndResumeId(careerInfoId, memberId, resumeId);
         CareerInfo updatedCareerInfo = careerInfo.update(
                 careerInfoRequest.getPlace(),
@@ -78,8 +78,8 @@ public class CareerInfoServiceImpl implements CareerInfoService {
                 .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
     }
 
-    private void validateCareerInfoExists(Long memberId, Long resumeId) {
-        if (!careerInfoRepository.existsByMemberIdAndResumeId(memberId, resumeId)) {
+    private void validateCareerInfoExists(Long careerInfoId) {
+        if (!careerInfoRepository.existsById(careerInfoId)) {
             throw new Il210soException(ErrorCode.CAREER_INFO_NOT_FOUND);
         }
     }

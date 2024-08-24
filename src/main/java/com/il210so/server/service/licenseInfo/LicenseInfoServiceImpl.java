@@ -35,7 +35,14 @@ public class LicenseInfoServiceImpl implements LicenseInfoService {
 
     @Override
     public void edit(LicenseInfoRequest licenseInfoRequest, Long memberId, Long resumeId, Long licenseInfoId) {
-
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        LicenseInfo licenseInfo = findByLicenseInfoId(licenseInfoId);
+        LicenseInfo updatedLicenseInfo = licenseInfo.update(
+                licenseInfoRequest.getLicenseName(),
+                licenseInfoRequest.getGetDate(),
+                licenseInfoRequest.getAgency());
+        licenseInfoRepository.save(updatedLicenseInfo);
     }
 
     @Override
@@ -63,5 +70,10 @@ public class LicenseInfoServiceImpl implements LicenseInfoService {
     private Resume findResumeById(Long resumeId) {
         return resumeRepository.findById(resumeId)
                 .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
+    }
+
+    private LicenseInfo findByLicenseInfoId(Long licenseInfoId) {
+        return licenseInfoRepository.findById(licenseInfoId)
+                .orElseThrow(() -> new Il210soException(ErrorCode.LICENSE_INFO_NOT_FOUND));
     }
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @Entity
 public class Resume {
@@ -21,13 +23,25 @@ public class Resume {
     @Column(name = "pdf_url")
     private String pdfUrl;
 
+    @OneToMany(mappedBy = "resume")
+    private List<LicenseInfo> licenses;
+
+    @OneToMany(mappedBy = "resume")
+    private List<CareerInfo> careers;
+
+    @OneToMany(mappedBy = "resume")
+    private List<TrainingInfo> trainings;
+
     public Resume() {
     }
     @Builder
-    public Resume(Long id, Member member, String webviewUrl, String pdfUrl) {
+    public Resume(Long id, Member member, String webviewUrl, String pdfUrl, List<LicenseInfo> licenses, List<CareerInfo> careers, List<TrainingInfo> trainings) {
         this.id = id;
         this.member = member;
         this.webviewUrl = webviewUrl;
         this.pdfUrl = pdfUrl;
+        this.licenses = licenses;
+        this.careers = careers;
+        this.trainings = trainings;
     }
 }

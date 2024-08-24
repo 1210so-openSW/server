@@ -4,14 +4,15 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.YearMonth;
 
 @Getter
 @Entity
 public class CareerInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long careerId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -25,10 +26,10 @@ public class CareerInfo {
     private String place;
 
     @Column(name = "start_date", nullable = false)
-    private Date startDate;
+    private YearMonth startDate;
 
     @Column(name = "end_date", nullable = false)
-    private Date endDate;
+    private YearMonth endDate;
 
     @Column(name = "task", nullable = false)
     private String task;
@@ -37,8 +38,8 @@ public class CareerInfo {
     }
 
     @Builder
-    public CareerInfo(Long careerId, Member member, Resume resume, String place, Date startDate, Date endDate, String task) {
-        this.careerId = careerId;
+    public CareerInfo(Long id, Member member, Resume resume, String place, YearMonth startDate, YearMonth endDate, String task) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.place = place;

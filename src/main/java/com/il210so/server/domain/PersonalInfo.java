@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 @Entity
 public class PersonalInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long personalId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -24,7 +26,7 @@ public class PersonalInfo {
     private String name;
 
     @Column(name = "bdate", nullable = false)
-    private String bdate;
+    private LocalDate bdate;
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -39,8 +41,8 @@ public class PersonalInfo {
     }
 
     @Builder
-    public PersonalInfo(Long personalId, Member member, Resume resume, String name, String bdate, String address, String phoneNumber, String emergencyPhone) {
-        this.personalId = personalId;
+    public PersonalInfo(Long id, Member member, Resume resume, String name, LocalDate bdate, String address, String phoneNumber, String emergencyPhone) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.name = name;

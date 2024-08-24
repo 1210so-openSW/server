@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 
 @Getter
 public class CareerInfoResponse {
+    private Long id;
     private String place;
     private YearMonth startDate;
     private YearMonth endDate;
     private String task;
 
-    public CareerInfoResponse(String place, YearMonth startDate, YearMonth endDate, String task) {
+    public CareerInfoResponse(Long id, String place, YearMonth startDate, YearMonth endDate, String task) {
+        this.id = id;
         this.place = place;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -23,6 +25,7 @@ public class CareerInfoResponse {
 
     public static CareerInfoResponse from(CareerInfo careerInfo) {
         return new CareerInfoResponse(
+                careerInfo.getId(),
                 careerInfo.getPlace(),
                 careerInfo.getStartDate(),
                 careerInfo.getEndDate(),

@@ -15,6 +15,9 @@ public class AcademicInfoRequest {
     private String major;
     private Date graduationDate;
 
+    public AcademicInfoRequest() {
+    }
+
     public AcademicInfoRequest(String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;

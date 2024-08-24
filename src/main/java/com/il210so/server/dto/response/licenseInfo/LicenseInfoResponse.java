@@ -1,9 +1,13 @@
 package com.il210so.server.dto.response.licenseInfo;
 
+import com.il210so.server.domain.CareerInfo;
 import com.il210so.server.domain.LicenseInfo;
+import com.il210so.server.dto.response.careerInfo.CareerInfoResponse;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 public class LicenseInfoResponse {
@@ -26,6 +30,12 @@ public class LicenseInfoResponse {
                 licenseInfo.getGetDate(),
                 licenseInfo.getAgency()
         );
+    }
+
+    public static List<LicenseInfoResponse> from(List<LicenseInfo> licenseInfos) {
+        return licenseInfos.stream()
+                .map(LicenseInfoResponse::from)
+                .collect(Collectors.toList());
     }
 }
 

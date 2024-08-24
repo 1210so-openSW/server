@@ -47,7 +47,10 @@ public class LicenseInfoServiceImpl implements LicenseInfoService {
 
     @Override
     public List<LicenseInfoResponse> showLicenseInfos(Long memberId, Long resumeId) {
-        return null;
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        List<LicenseInfo> licenseInfos = licenseInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
+        return LicenseInfoResponse.from(licenseInfos);
     }
 
     private void validateResumeExists(Long resumeId) {

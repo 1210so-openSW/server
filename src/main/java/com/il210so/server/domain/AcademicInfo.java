@@ -12,7 +12,7 @@ import java.time.Year;
 public class AcademicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long academicId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
@@ -41,8 +41,8 @@ public class AcademicInfo {
     }
 
     @Builder
-    public AcademicInfo(Long academicId, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
-        this.academicId = academicId;
+    public AcademicInfo(Long id, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
+        this.id = id;
         this.member = member;
         this.resume = resume;
         this.highestEdu = highestEdu;
@@ -54,7 +54,7 @@ public class AcademicInfo {
 
     public AcademicInfo update(String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
         return new AcademicInfo().builder()
-                .academicId(this.academicId)
+                .id(this.id)
                 .member(this.member)
                 .resume(this.resume)
                 .highestEdu(highestEdu)

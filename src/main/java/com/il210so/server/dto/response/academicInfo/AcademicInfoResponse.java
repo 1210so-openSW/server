@@ -3,7 +3,7 @@ package com.il210so.server.dto.response.academicInfo;
 import com.il210so.server.domain.AcademicInfo;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 public class AcademicInfoResponse {
@@ -11,9 +11,9 @@ public class AcademicInfoResponse {
     private String schoolName;
     private String majorField;
     private String major;
-    private Date graduationDate;
+    private LocalDate graduationDate;
 
-    private AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
+    private AcademicInfoResponse(String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
         this.highestEdu = highestEdu;
         this.schoolName = schoolName;
         this.majorField = majorField;

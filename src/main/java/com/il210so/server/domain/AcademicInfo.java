@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Entity
@@ -34,13 +34,13 @@ public class AcademicInfo {
     private String major;
 
     @Column(name = "graduation_date")
-    private Date graduationDate;
+    private LocalDate graduationDate;
 
     public AcademicInfo() {
     }
 
     @Builder
-    public AcademicInfo(Long academicId, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
+    public AcademicInfo(Long academicId, Member member, Resume resume, String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
         this.academicId = academicId;
         this.member = member;
         this.resume = resume;
@@ -51,7 +51,7 @@ public class AcademicInfo {
         this.graduationDate = graduationDate;
     }
 
-    public AcademicInfo update(String highestEdu, String schoolName, String majorField, String major, Date graduationDate) {
+    public AcademicInfo update(String highestEdu, String schoolName, String majorField, String major, LocalDate graduationDate) {
         return new AcademicInfo().builder()
                 .academicId(this.academicId)
                 .member(this.member)

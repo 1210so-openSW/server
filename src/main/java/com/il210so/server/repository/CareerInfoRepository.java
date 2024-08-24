@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface CareerInfoRepository extends JpaRepository<CareerInfo, Long> {
     boolean existsByMemberIdAndResumeId(Long memberId, Long resumeId);
     List<CareerInfo> findByMemberIdAndResumeId(Long memberId, Long resumeId);
-    Optional<CareerInfo> findByIdAndMemberIdAndResumeId(Long id, Long memberId, Long resumeId);
+    CareerInfo findByIdAndMemberIdAndResumeId(Long id, Long memberId, Long resumeId);
 }

@@ -11,7 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -22,8 +22,8 @@ public class Member {
     public Member() {
     }
     @Builder
-    public Member(Long memberId, String name, String pwd) {
-        this.memberId = memberId;
+    public Member(Long id, String name, String pwd) {
+        this.id = id;
         this.name = name;
         this.pwd = pwd;
     }

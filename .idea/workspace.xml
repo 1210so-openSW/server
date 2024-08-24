@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529fccd3-aa03-42ec-b9a5-057d4d283d25" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/AcademicInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/CareerInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/IntroductionInfo/IntroductionInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/IntroductionInfo/Personality.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/LicenseInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/PersonalInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/Resume.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/il210so/server/domain/TrainingInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,9 +43,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2kq2dCAJjwmGh5ZcXz4OmuFnckY" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -65,7 +57,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/#6-domain",
+    "git-widget-placeholder": "feat/#1-settings",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/kong-yaejin/Desktop/1210so/server",
     "node.js.detected.package.eslint": "true",

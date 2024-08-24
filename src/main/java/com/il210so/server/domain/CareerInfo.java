@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Entity
@@ -25,10 +25,10 @@ public class CareerInfo {
     private String place;
 
     @Column(name = "start_date", nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", nullable = false)
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "task", nullable = false)
     private String task;
@@ -37,7 +37,7 @@ public class CareerInfo {
     }
 
     @Builder
-    public CareerInfo(Long id, Member member, Resume resume, String place, Date startDate, Date endDate, String task) {
+    public CareerInfo(Long id, Member member, Resume resume, String place, LocalDate startDate, LocalDate endDate, String task) {
         this.id = id;
         this.member = member;
         this.resume = resume;

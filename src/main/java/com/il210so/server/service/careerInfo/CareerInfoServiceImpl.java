@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -46,8 +48,11 @@ public class CareerInfoServiceImpl implements CareerInfoService {
     }
 
     @Override
-    public CareerInfoResponse showCareerInfos(Long memberId, Long resumeId) {
-        return null;
+    public List<CareerInfoResponse> showCareerInfos(Long memberId, Long resumeId) {
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        List<CareerInfo> careerInfos = careerInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
+        return CareerInfoResponse.from(careerInfos);
     }
 
 

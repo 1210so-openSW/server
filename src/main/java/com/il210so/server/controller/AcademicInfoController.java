@@ -16,8 +16,8 @@ public class AcademicInfoController {
 
     @PostMapping
     public ResponseEntity<Void> save(
-            @PathVariable Long memberId,
-            @PathVariable Long resumeId,
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("resumeId") Long resumeId,
             @RequestBody AcademicInfoRequest academicInfoRequest) {
         academicInfoService.saveAcademicInfos(academicInfoRequest, memberId, resumeId);
         return ResponseEntity.ok().build();
@@ -25,8 +25,8 @@ public class AcademicInfoController {
 
     @PutMapping
     public ResponseEntity<Void> edit(
-            @PathVariable Long memberId,
-            @PathVariable Long resumeId,
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("resumeId") Long resumeId,
             @RequestBody AcademicInfoRequest academicInfoRequest) {
         academicInfoService.editAcademicInfos(academicInfoRequest, memberId, resumeId);
         return ResponseEntity.ok().build();
@@ -34,8 +34,8 @@ public class AcademicInfoController {
 
     @GetMapping
     public AcademicInfoResponse getAcademicInfos(
-            @PathVariable Long memberId,
-            @PathVariable Long resumeId) {
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("resumeId") Long resumeId) {
         return academicInfoService.showAcademicInfos(memberId, resumeId);
     }
 }

@@ -51,4 +51,17 @@ public class AcademicInfo {
         this.major = major;
         this.graduationYear = graduationYear;
     }
+
+    public AcademicInfo update(String highestEdu, String schoolName, String majorField, String major, Year graduationYear) {
+        return new AcademicInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .highestEdu(highestEdu)
+                .schoolName(schoolName)
+                .majorField(majorField)
+                .major(major)
+                .graduationYear(graduationYear)
+                .build();
+    }
 }

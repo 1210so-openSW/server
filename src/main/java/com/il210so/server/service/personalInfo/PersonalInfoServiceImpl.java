@@ -41,6 +41,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
                 personalInfo.getName(),
                 personalInfo.getBdate(),
                 personalInfo.getAddress(),
+                personalInfo.getEmail(),
                 personalInfo.getPhoneNumber(),
                 personalInfo.getEmergencyPhone());
         personalInfoRepository.save(updatedPersonalInfo);

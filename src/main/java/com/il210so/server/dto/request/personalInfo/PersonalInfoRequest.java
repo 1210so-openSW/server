@@ -10,16 +10,18 @@ public class PersonalInfoRequest {
     private String name;
     private LocalDate bdate;
     private String address;
+    private String email;
     private String phoneNumber;
     private String emergencyPhone;
 
     public PersonalInfoRequest() {
     }
 
-    public PersonalInfoRequest(String name, LocalDate bdate, String address, String phoneNumber, String emergencyPhone) {
+    public PersonalInfoRequest(String name, LocalDate bdate, String address, String email, String phoneNumber, String emergencyPhone) {
         this.name = name;
         this.bdate = bdate;
         this.address = address;
+        this.email = email;
         this.phoneNumber = phoneNumber;
         this.emergencyPhone = emergencyPhone;
     }
@@ -31,7 +33,9 @@ public class PersonalInfoRequest {
                 .name(this.name)
                 .bdate(this.bdate)
                 .address(this.address)
+                .email(this.email)
                 .phoneNumber(this.phoneNumber)
+                .emergencyPhone(this.emergencyPhone)
                 .build();
     }
 

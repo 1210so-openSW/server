@@ -5,6 +5,7 @@ import com.il210so.server.domain.Member;
 import com.il210so.server.domain.Resume;
 import com.il210so.server.domain.TrainingInfo;
 import com.il210so.server.dto.request.trainingInfo.TrainingInfoRequest;
+import com.il210so.server.dto.response.licenseInfo.LicenseInfoResponse;
 import com.il210so.server.dto.response.trainingInfo.TrainingInfoResponse;
 import com.il210so.server.exception.ErrorCode;
 import com.il210so.server.exception.Il210soException;
@@ -50,7 +51,10 @@ public class TrainingInfoServiceImpl implements TrainingInfoService {
 
     @Override
     public List<TrainingInfoResponse> showTrainingInfos(Long memberId, Long resumeId) {
-        return null;
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        List<TrainingInfo> trainingInfos = trainingInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
+        return TrainingInfoResponse.from(trainingInfos);
     }
 
     private void validateResumeExists(Long resumeId) {

@@ -37,7 +37,15 @@ public class TrainingInfoServiceImpl implements TrainingInfoService {
 
     @Override
     public void edit(TrainingInfoRequest trainingInfoRequest, Long memberId, Long resumeId, Long trainingInfoId) {
-
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        TrainingInfo trainingInfo = findByTrainingInfoId(trainingInfoId);
+        TrainingInfo updatedTrainingInfo = trainingInfo.update(
+                trainingInfoRequest.getTrainingName(),
+                trainingInfoRequest.getTrainingStartDate(),
+                trainingInfoRequest.getTrainingEndDate(),
+                trainingInfoRequest.getTrainingAgency());
+        trainingInfoRepository.save(updatedTrainingInfo);
     }
 
     @Override
@@ -65,5 +73,10 @@ public class TrainingInfoServiceImpl implements TrainingInfoService {
     private Resume findResumeById(Long resumeId) {
         return resumeRepository.findById(resumeId)
                 .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
+    }
+
+    private TrainingInfo findByTrainingInfoId(Long trainingInfoId) {
+        return trainingInfoRepository.findById(trainingInfoId)
+                .orElseThrow(() -> new Il210soException(ErrorCode.TRAINING_INFO_NOT_FOUND));
     }
 }

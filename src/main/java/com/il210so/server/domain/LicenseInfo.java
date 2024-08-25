@@ -1,5 +1,6 @@
 package com.il210so.server.domain;
 
+import com.il210so.server.dto.response.licenseInfo.LicenseInfoResponse;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,5 +43,16 @@ public class LicenseInfo {
         this.licenseName = licenseName;
         this.getDate = getDate;
         this.agency = agency;
+    }
+
+    public LicenseInfo update(String licenseName, LocalDate getDate, String agency) {
+        return new LicenseInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .licenseName(licenseName)
+                .getDate(getDate)
+                .agency(agency)
+                .build();
     }
 }

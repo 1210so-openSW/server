@@ -51,4 +51,17 @@ public class PersonalInfo {
         this.phoneNumber = phoneNumber;
         this.emergencyPhone = emergencyPhone;
     }
+
+    public PersonalInfo update(String name, LocalDate bdate, String address, String phoneNumber, String emergencyPhone) {
+        return new PersonalInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .name(this.name)
+                .bdate(this.bdate)
+                .address(this.address)
+                .phoneNumber(this.phoneNumber)
+                .emergencyPhone(this.emergencyPhone)
+                .build();
+    }
 }

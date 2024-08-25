@@ -1,6 +1,5 @@
 package com.il210so.server.service.personalInfo;
 
-import com.il210so.server.domain.AcademicInfo;
 import com.il210so.server.domain.Member;
 import com.il210so.server.domain.PersonalInfo;
 import com.il210so.server.domain.Resume;
@@ -34,7 +33,17 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 
     @Override
     public void editPersonalInfo(PersonalInfoRequest personalInfoRequest, Long memberId, Long resumeId) {
-
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        validatePersonalInfoExists(memberId, resumeId);
+        PersonalInfo personalInfo = personalInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
+        PersonalInfo updatedPersonalInfo = personalInfo.update(
+                personalInfo.getName(),
+                personalInfo.getBdate(),
+                personalInfo.getAddress(),
+                personalInfo.getPhoneNumber(),
+                personalInfo.getEmergencyPhone());
+        personalInfoRepository.save(updatedPersonalInfo);
     }
 
     @Override
@@ -62,5 +71,11 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
     private Resume findResumeById(Long resumeId) {
         return resumeRepository.findById(resumeId)
                 .orElseThrow(() -> new Il210soException(ErrorCode.RESUME_NOT_FOUND));
+    }
+
+    private void validatePersonalInfoExists(Long memberId, Long resumeId) {
+        if (!(personalInfoRepository.existsByMemberIdAndResumeId(memberId, resumeId))) {
+            throw new Il210soException(ErrorCode.PERSONAL_INFO_NOT_FOUND);
+        }
     }
 }

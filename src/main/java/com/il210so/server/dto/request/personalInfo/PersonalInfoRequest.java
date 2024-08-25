@@ -3,9 +3,11 @@ package com.il210so.server.dto.request.personalInfo;
 import com.il210so.server.domain.Member;
 import com.il210so.server.domain.PersonalInfo;
 import com.il210so.server.domain.Resume;
+import lombok.Getter;
 
 import java.time.LocalDate;
 
+@Getter
 public class PersonalInfoRequest {
     private String name;
     private LocalDate bdate;

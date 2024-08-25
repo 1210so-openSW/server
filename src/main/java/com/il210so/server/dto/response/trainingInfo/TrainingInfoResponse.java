@@ -32,7 +32,7 @@ public class TrainingInfoResponse {
                 trainingInfo.getTrainingAgency());
     }
 
-    public List<TrainingInfoResponse> from (List<TrainingInfo> trainingInfos) {
+    public static List<TrainingInfoResponse> from (List<TrainingInfo> trainingInfos) {
         return trainingInfos.stream()
                 .map(TrainingInfoResponse::from)
                 .collect(Collectors.toList());

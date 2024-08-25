@@ -47,8 +47,13 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public PersonalInfoResponse showPersonalInfos(Long memberId, Long resumeId) {
-        return null;
+        validateMemberExists(memberId);
+        validateResumeExists(resumeId);
+        validatePersonalInfoExists(memberId, resumeId);
+        PersonalInfo personalInfo = personalInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
+        return PersonalInfoResponse.from(personalInfo);
     }
 
     private void validateResumeExists(Long resumeId) {

@@ -10,7 +10,8 @@ public enum ErrorCode {
     RESUME_NOT_FOUND(NOT_FOUND, "이력서를 찾을 수 없습니다."),
     ACADEMIC_INFO_NOT_FOUND(NOT_FOUND, "학력정보를 찾을 수 없습니다."),
     CAREER_INFO_NOT_FOUND(NOT_FOUND, "경력정보를 찾을 수 없습니다."),
-    LICENSE_INFO_NOT_FOUND(NOT_FOUND, "자격정보를 찾을 수 없습니다.");
+    LICENSE_INFO_NOT_FOUND(NOT_FOUND, "자격정보를 찾을 수 없습니다."),
+    TRAINING_INFO_NOT_FOUND(NOT_FOUND, "훈련정보를 찾을 수 없습니다.");
 
     private final HttpStatus status;
     private final String message;

@@ -1,5 +1,6 @@
 package com.il210so.server.domain;
 
+import com.il210so.server.dto.request.trainingInfo.TrainingInfoRequest;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,5 +47,17 @@ public class TrainingInfo {
         this.trainingStartDate = trainingStartDate;
         this.trainingEndDate = trainingEndDate;
         this.trainingAgency = trainingAgency;
+    }
+
+    public TrainingInfo update(String trainingName, YearMonth trainingStartDate, YearMonth trainingEndDate, String trainingAgency) {
+        return new TrainingInfo().builder()
+                .id(this.id)
+                .member(this.member)
+                .resume(this.resume)
+                .trainingName(trainingName)
+                .trainingStartDate(trainingStartDate)
+                .trainingEndDate(trainingEndDate)
+                .trainingAgency(trainingAgency)
+                .build();
     }
 }

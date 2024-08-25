@@ -3,9 +3,11 @@ package com.il210so.server.dto.request.trainingInfo;
 import com.il210so.server.domain.Member;
 import com.il210so.server.domain.Resume;
 import com.il210so.server.domain.TrainingInfo;
+import lombok.Getter;
 
 import java.time.YearMonth;
 
+@Getter
 public class TrainingInfoRequest {
     private String trainingName;
     private YearMonth trainingStartDate;

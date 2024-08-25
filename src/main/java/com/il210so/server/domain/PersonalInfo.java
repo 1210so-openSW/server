@@ -61,12 +61,12 @@ public class PersonalInfo {
                 .id(this.id)
                 .member(this.member)
                 .resume(this.resume)
-                .name(this.name)
-                .bdate(this.bdate)
-                .address(this.address)
-                .email(this.email)
-                .phoneNumber(this.phoneNumber)
-                .emergencyPhone(this.emergencyPhone)
+                .name(name)
+                .bdate(bdate)
+                .address(address)
+                .email(email)
+                .phoneNumber(phoneNumber)
+                .emergencyPhone(emergencyPhone)
                 .build();
     }
 }

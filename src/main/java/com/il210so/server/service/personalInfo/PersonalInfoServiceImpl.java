@@ -38,12 +38,12 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
         validatePersonalInfoExists(memberId, resumeId);
         PersonalInfo personalInfo = personalInfoRepository.findByMemberIdAndResumeId(memberId, resumeId);
         PersonalInfo updatedPersonalInfo = personalInfo.update(
-                personalInfo.getName(),
-                personalInfo.getBdate(),
-                personalInfo.getAddress(),
-                personalInfo.getEmail(),
-                personalInfo.getPhoneNumber(),
-                personalInfo.getEmergencyPhone());
+                personalInfoRequest.getName(),
+                personalInfoRequest.getBdate(),
+                personalInfoRequest.getAddress(),
+                personalInfoRequest.getEmail(),
+                personalInfoRequest.getPhoneNumber(),
+                personalInfoRequest.getEmergencyPhone());
         personalInfoRepository.save(updatedPersonalInfo);
     }
 
